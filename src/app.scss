@@ -1,0 +1,29 @@
+@import "./scss/env.scss";
+
+body {
+  background-color: $bg;
+  font-family: system-ui,sans-serif;
+  line-height: 1.6;
+  color: $fg;
+}
+
+a {
+  color: $ac;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+pre, code {
+  background-color: $code;
+}
+
+pre {
+  padding: 1rem;
+  line-height: 1.3;
+  code {
+    cursor: text;
+  }
+}

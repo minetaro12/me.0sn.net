@@ -1,3 +1,6 @@
+---
+hideTitle: true
+---
 # me.0sn.net
 
 ## ホーム
@@ -14,5 +17,4 @@ import "fmt"
 func main() {
 	fmt.Println("Hello")
 }
-
 ```

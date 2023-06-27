@@ -1,7 +1,14 @@
 <script>
   import Head from "./lib/Head.svelte";
-  export let title;
+  import PostHeader from "./lib/PostHeader.svelte";
+  export let title, date, hideTitle;
 </script>
 
-<Head {title}/>
-<slot />
+<Head {title} />
+
+{#if !hideTitle}
+  <PostHeader {title} {date} />
+{/if}
+<article class="post-content">
+  <slot />
+</article>

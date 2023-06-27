@@ -1,8 +1,10 @@
 @import "./scss/env.scss";
+@import "./scss/article.scss";
+@import "./scss/fonts.scss";
 
 body {
   background-color: $bg;
-  font-family: system-ui,sans-serif;
+  font-family: system-ui, sans-serif;
   line-height: 1.6;
   color: $fg;
 }
@@ -13,17 +15,5 @@ a {
 
   &:hover {
     text-decoration: underline;
-  }
-}
-
-pre, code {
-  background-color: $code;
-}
-
-pre {
-  padding: 1rem;
-  line-height: 1.3;
-  code {
-    cursor: text;
   }
 }

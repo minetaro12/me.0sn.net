@@ -1,6 +1,7 @@
 ---
 title: "Markdown Syntax"
 date: "2023-06-27T09:58:20+09:00"
+tags: ["example", "markdown"]
 hideTitle: false
 ---
 # Markdown example

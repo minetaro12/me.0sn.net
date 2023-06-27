@@ -38,6 +38,7 @@ if (path == "" || path == undefined) {
 const strs = `---
 title: ""
 date: "${date}"
+tags: []
 hideTitle: false
 ---`
 

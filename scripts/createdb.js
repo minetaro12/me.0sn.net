@@ -6,7 +6,7 @@ const postList = []
 function writeFile(path, data) {
   try {
     fs.writeFileSync(path, data)
-  } catch(err) {
+  } catch (err) {
     throw new Error("Failed to create file")
   }
 }
@@ -16,6 +16,7 @@ globSync("./src/routes/posts/**/+page.md").forEach(function (file) {
   postList.push({
     path: file.slice(10).slice(0, -8),
     title: frontMatter.attributes.title,
+    tags: frontMatter.attributes.tags,
     date: frontMatter.attributes.date
   })
 })

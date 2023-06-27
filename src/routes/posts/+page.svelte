@@ -3,8 +3,20 @@
   import { posts } from "../../posts";
   import sort from "../../lib/sort";
   import moment from "moment";
+  import getTags from "../../lib/getTags";
+  import searchPost from "../../lib/searchPost";
 
   let isAsc = false;
+  let searchTag;
+  let resPosts = [];
+
+  $: {
+    if (searchTag === undefined) {
+      resPosts = sort(posts, isAsc);
+    } else {
+      resPosts = sort(searchPost(posts, searchTag), isAsc);
+    }
+  }
 </script>
 
 <svelte:head>
@@ -14,17 +26,30 @@
 <div class="list-header">
   <h1>Posts</h1>
   <span>
+    <select bind:value={searchTag}>
+      <option value={undefined}>not selected</option>
+      {#each getTags(posts) as tag}
+        <option value={tag}>{tag}</option>
+      {/each}
+    </select>
+  </span>
+  <span>
     <input type="checkbox" bind:value={isAsc} id="isAsc" bind:checked={isAsc} />
     <label for="isAsc">昇順</label>
   </span>
 </div>
 
 <ul class="post-list">
-  {#each sort(posts, isAsc) as post}
+  {#each resPosts as post}
     <li>
       <a href={post.path}>{post.title}</a>
-      <div>
+      <div class="post-meta">
         <span><time>{moment(post.date).format("YYYY-MM-DD")}</time></span>
+        <span class="tag-list">
+          {#each post.tags as tag}
+            <span class="tag">#{tag}</span>
+          {/each}
+        </span>
       </div>
     </li>
   {/each}
@@ -35,7 +60,10 @@
   .list-header {
     align-items: center;
     display: flex;
-    justify-content: space-between;
+
+    h1 {
+      flex: 1;
+    }
 
     span {
       user-select: none;
@@ -69,8 +97,12 @@
         }
       }
 
-      > div {
+      > div.post-meta {
         font-size: small;
+
+        .tag {
+          margin-right: 5px;
+        }
       }
     }
   }

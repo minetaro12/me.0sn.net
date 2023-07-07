@@ -42,4 +42,4 @@ tags: []
 hideTitle: false
 ---`
 
-createFile("./src/routes/" + path, strs)
+createFile(path, strs)

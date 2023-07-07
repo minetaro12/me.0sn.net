@@ -3,8 +3,8 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
-		"dev": "node ./scripts/createdb.js && vite dev",
-		"build": "node ./scripts/createdb.js && vite build",
+		"dev": "vite dev",
+		"build": "vite build",
 		"preview": "vite preview"
 	},
 	"devDependencies": {

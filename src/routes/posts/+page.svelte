@@ -1,6 +1,6 @@
 <script>
+  export let data;
   import { title } from "../../config";
-  import { posts } from "../../posts";
   import sort from "../../lib/sort";
   import moment from "moment";
   import getTags from "../../lib/getTags";
@@ -12,9 +12,9 @@
 
   $: {
     if (searchTag === undefined) {
-      resPosts = sort(posts, isAsc);
+      resPosts = sort(data.postList, isAsc);
     } else {
-      resPosts = sort(searchPost(posts, searchTag), isAsc);
+      resPosts = sort(searchPost(data.postList, searchTag), isAsc);
     }
   }
 </script>
@@ -28,7 +28,7 @@
   <span>
     <select bind:value={searchTag}>
       <option value={undefined}>not selected</option>
-      {#each getTags(posts) as tag}
+      {#each getTags(data.postList) as tag}
         <option value={tag}>{tag}</option>
       {/each}
     </select>

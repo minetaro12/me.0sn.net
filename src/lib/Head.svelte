@@ -1,15 +1,16 @@
 <script>
-  import { title as configTitle } from "../config";
+  import config from "../config";
   export let title;
 
   let outTitle;
   if (title == undefined) {
-    outTitle = configTitle;
+    outTitle = config.title;
   } else {
-    outTitle = title + " - " + configTitle;
+    outTitle = title + " - " + config.title;
   }
 </script>
 
 <svelte:head>
   <title>{outTitle}</title>
+  <meta name="description" content={config.description} />
 </svelte:head>

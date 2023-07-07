@@ -1,6 +1,6 @@
 <script>
   export let data;
-  import { title } from "../../config";
+  import Head from "../../lib/Head.svelte";
   import sort from "../../lib/sort";
   import moment from "moment";
   import getTags from "../../lib/getTags";
@@ -19,9 +19,7 @@
   }
 </script>
 
-<svelte:head>
-  <title>Posts - {title}</title>
-</svelte:head>
+<Head title="Posts" />
 
 <div class="list-header">
   <h1>Posts</h1>
@@ -98,7 +96,7 @@
 
       &:hover {
         filter: invert(100%);
-        transition: .5s;
+        transition: 0.5s;
       }
 
       a {

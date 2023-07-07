@@ -1,18 +1,18 @@
 <script>
   import { page } from "$app/stores";
-  import { links, extLinks } from "../config";
+  import config from "../config";
 </script>
 
 <header>
   <nav>
     <ul>
-      {#each links as link}
+      {#each config.links as link}
         <li>
           <a href={link.path} class:now={$page.url.pathname == link.path}
             >{link.name}</a
           >
         </li>
-      {/each}{#each extLinks as extLink}
+      {/each}{#each config.extLinks as extLink}
         <li>
           <a href={extLink.path} target="_blank" rel="noopener noreferrer"
             >{extLink.name}</a

@@ -42,7 +42,8 @@
 <ul class="post-list">
   {#each resPosts as post}
     <li>
-      <a href={post.path}>{post.title}</a>
+      <a href={post.path} aria-label={post.title} />
+      <div class="post-title">{post.title}</div>
       <div class="post-meta">
         <span><time>{moment(post.date).format("YYYY-MM-DD")}</time></span>
         <span class="tag-list">
@@ -74,35 +75,38 @@
     padding: 0;
     list-style: none;
 
+    .post-title {
+      font-size: 1.25em;
+      font-weight: 500;
+    }
+
+    .post-meta {
+      font-size: 0.8em;
+
+      .tag {
+        margin-right: 5px;
+      }
+    }
+
     li {
-      border-bottom: 1px dashed $br;
-      display: flex;
-      flex-direction: column;
+      background-color: $bg;
+      border: 2px solid $br;
+      border-radius: 5px;
       margin-bottom: 10px;
-      padding-bottom: 5px;
+      padding: 15px;
+      position: relative;
 
       &:hover {
-        border-bottom: 1px solid;
+        filter: invert(100%);
+        transition: .5s;
       }
 
       a {
-        color: $fg;
-        font-weight: 500;
-        padding-bottom: 10px;
-        text-decoration: none;
-
-        &:hover {
-          color: $ac;
-          text-decoration: underline;
-        }
-      }
-
-      > div.post-meta {
-        font-size: small;
-
-        .tag {
-          margin-right: 5px;
-        }
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
       }
     }
   }

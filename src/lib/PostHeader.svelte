@@ -1,5 +1,5 @@
 <script>
-  export let title, date;
+  export let title, date, tags;
   import moment from "moment";
 </script>
 
@@ -7,6 +7,9 @@
   <h1>{title}</h1>
   {#if date != undefined}
     <time>{moment(date).format("YYYY-MM-DD hh:mm:ss")}</time>
+    {#each tags as tag}
+      <span class="tags">#{tag}</span>
+    {/each}
   {/if}
 </div>
 
@@ -16,8 +19,9 @@
       margin: 0;
     }
 
-    time {
+    time,.tags {
       font-size: smaller;
+      margin-right: 0.25rem;
     }
   }
 </style>
